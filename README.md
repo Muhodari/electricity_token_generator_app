@@ -1,4 +1,4 @@
-# Catterm2tokenapp
+# Electricity Token selling App
 
 ![alt text](https://github.com/Muhodari/electricity_token_generator_app/blob/main/src/assets/images/ElectricityToken.png?raw=true)
 
