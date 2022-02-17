@@ -3,11 +3,8 @@ module.exports = (app) => {
 
     var router = require("express").Router();
 
-    // Create a new Token
+
     router.post("/", token.create);
-
-    // Retrieve a single Token with id
-    router.get("/:code", token.findOne);
-
+    router.get("/:id", token.findOne);
     app.use("/api/token", router);
 };

@@ -4,17 +4,18 @@ const { Meter } = require("../models/meter.model");
 const { v4: uuidv4 } = require("uuid");
 const { getTokenExpirationDate } = require("../utils/imports");
 
-// Create and Save a new Token
+
+// create token
+
 exports.create = async (req, res) => {
-  // Validate request
   const { error } = validateTokenPayload(req.body);
   if (error) {
     res.status(400).send({ message: error.details[0].message });
     return;
-  } else if (req.body.total_amount % 100)
+  } else if (req.body.amount % 100)
     return res
       .status(400)
-      .send({ message: "total amount should be a multiple of 100" });
+      .send({ message: "the mimimum amount is 100" });
 
   const meter = await Meter.findOne({ code: req.body.meter_number });
 
@@ -23,11 +24,10 @@ exports.create = async (req, res) => {
       message: "Meter Not Found",
     });
 
-  // Save Token in the database
   Token.create({
-    code: uuidv4(), // new uuid
+    code: uuidv4(), 
     meter_number: req.body.meter_number,
-    total_amount: req.body.total_amount,
+    amount: req.body.amount,
     status: "unused",
   })
     .then((data) => {
@@ -35,12 +35,13 @@ exports.create = async (req, res) => {
     })
     .catch((err) => {
       res.status(500).send({
-        message: err.message || "Some error occurred while creating the Token.",
+        message: err.message || "error occured",
       });
     });
 };
 
-// Find a single Token by code
+
+
 exports.findOne = (req, res) => {
   const code = req.params.code;
 
@@ -48,13 +49,13 @@ exports.findOne = (req, res) => {
     .then((data) => {
       if (!data)
         res.status(404).send({
-          message: "Not found Token with code " + code,
+          message: "no token found ",
         });
       else res.send(data);
     })
     .catch((err) => {
       res.status(500).send({
-        message: "Error retrieving Token with code=" + code,
+        message: "error occured" ,
       });
     });
 };

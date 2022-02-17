@@ -7,8 +7,7 @@ module.exports.getTokenExpirationDate = (amount, power_expiration_time) => {
   return new Date(date.setDate(date.getDate() + amount / 100));
 };
 
-module.exports.validateUUID = (str) => {
-  // Regular expression to check if string is a valid UUID
+module.exports.validateUUIDNumber = (str) => {
   const regexExp =
     /^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$/gi;
 
