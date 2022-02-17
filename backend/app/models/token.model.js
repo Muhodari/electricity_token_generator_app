@@ -26,6 +26,7 @@ module.exports.Token = Model;
 module.exports.validateTokenPay = (body) => {
   return Joi.object({
     amount: Joi.number().min(100).max(182500).required(),
+
     meterNumber: Joi.string().min(6).required(),
   }).validate(body);
 };
