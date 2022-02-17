@@ -4,12 +4,20 @@
 
     <form (submit)="onLogin(loginForm)" #loginForm="ngForm" *ngIf="!isLoading">
         <mat-form-field>
-            <input matInput type="number" name="email" ngModel placeholder="Cashpower Number" #emailInput="ngModel" required email>
-            <mat-error *ngIf="emailInput.invalid">Please enter Valid Email.</mat-error>
+            <input matInput type="number" name="email" ngModel placeholder="Meter Number" #emailInput="ngModel" 
+            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+            maxlength="6" required email>
+            <mat-error *ngIf="emailInput.invalid">Please enter Valid Meter Number.</mat-error>
         </mat-form-field>
         <mat-form-field>
-            <input matInput type="Number" name="password" ngModel placeholder="Enter Amount" #passwordInput="ngModel">
-            <mat-error *ngIf="passwordInput.invalid">Please enter password</mat-error>
+            <input matInput type="number" name="password" ngModel placeholder="Enter Amount" 
+            #passwordInput="ngModel"
+            min="10"
+            max="30"
+            
+       
+            >
+            <mat-error *ngIf="passwordInput.invalid">Please enter Money</mat-error>
         </mat-form-field>
 
         <button mat-raised-button color="accent" type="submit" *ngIf="!isLoading">BUY TOKEN
