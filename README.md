@@ -1,5 +1,7 @@
 # Catterm2tokenapp
 
+![alt text](https://github.com/Muhodari/electricity_token_generator_app/src/assets/images/Electricity Token.png?raw=true)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.3.
 
 ## Development server
