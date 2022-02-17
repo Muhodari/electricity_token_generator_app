@@ -1,0 +1,143 @@
+mat-form-field {
+    width: 100%;
+}
+
+mat-card-title {
+    text-align: center;
+    color: #0275d8;
+}
+
+mat-spinner {
+    margin: auto;
+}
+
+@media only screen and (width: 375px) {
+    /* For mobile phones: */
+    mat-card {
+        position: fixed;
+        width: 75%;
+        font-size: large;
+        box-shadow: 0 0 10px 5px #a7b0b8 !important;
+        margin: 1rem;
+    }
+    button {
+        font-size: large;
+    }
+}
+
+@media only screen and (width:414px) {
+    /* For mobile phones: */
+    mat-card {
+        position: fixed;
+        width: 70%;
+        font-size: large !important;
+        box-shadow: 0 0 10px 5px #a7b0b8 !important;
+        margin: 1rem;
+    }
+    button {
+        font-size: large;
+    }
+}
+
+@media only screen and (width:320px) {
+    /* For mobile phones: */
+    mat-card {
+        position: fixed;
+        width: 70%;
+        font-size: large !important;
+        box-shadow: 0 0 10px 5px #a7b0b8 !important;
+        margin: 1rem;
+    }
+    button {
+        font-size: large;
+    }
+}
+
+@media only screen and (width: 411px) {
+    /* For mobile phones: */
+    mat-card {
+        position: fixed;
+        width: 79%;
+        font-size: large !important;
+        box-shadow: 0 0 10px 5px #a7b0b8 !important;
+        margin: 1rem;
+    }
+    button {
+        font-size: large;
+    }
+}
+
+@media only screen and (width: 768px) {
+    /* For mobile phones: */
+    mat-card {
+        position: fixed;
+        width: 80%;
+        font-size: x-large!important;
+        margin-top: 6rem;
+        box-shadow: 0 0 10px 5px #a7b0b8 !important;
+        margin: 1rem;
+    }
+    button {
+        font-size: x-large;
+    }
+}
+
+@media only screen and (width: 1024px) {
+    /* For mobile phones: */
+    mat-card {
+        position: fixed;
+        width: 75%;
+        font-size: 40px;
+        margin-top: 30px;
+        box-shadow: 0 0 10px 5px #a7b0b8 !important;
+        margin: 1rem;
+    }
+    button {
+        font-size: large;
+    }
+}
+
+@media only screen and (min-width: 1025px) {
+    /* For mobile phones: */
+    mat-card {
+        position: fixed;
+        width: 40%;
+        margin-top: 4rem;
+        margin-left: 16rem;
+        box-shadow: 0 0 10px 5px #a7b0b8 !important;
+    }
+    mat-form-field {
+        padding-top: 2rem;
+    }
+    button {
+        box-shadow: 0 0 10px 5px !important;
+    }
+}
+
+@media only screen and (width: 360px) {
+    /* For mobile phones: */
+    mat-card {
+        position: fixed;
+        width: 70%;
+        font-size: large;
+        box-shadow: 0 0 10px 5px #a7b0b8 !important;
+        margin: 1rem;
+    }
+    button {
+        font-size: large;
+    }
+}
+
+@media only screen and (width: 280px) {
+    /* For mobile phones: */
+    mat-card {
+        position: fixed;
+        width: 75%;
+        font-size: 1rem !important;
+        box-shadow: 0 0 10px 5px #a7b0b8 !important;
+        margin: 1rem;
+    }
+    button {
+        font-size: large;
+    }
+}

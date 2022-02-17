@@ -1,0 +1,20 @@
+<mat-card>
+    <mat-card-title>Buy Electricity Token</mat-card-title>
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
+
+    <form (submit)="onLogin(loginForm)" #loginForm="ngForm" *ngIf="!isLoading">
+        <mat-form-field>
+            <input matInput type="number" name="email" ngModel placeholder="Cashpower Number" #emailInput="ngModel" required email>
+            <mat-error *ngIf="emailInput.invalid">Please enter Valid Email.</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type="Number" name="password" ngModel placeholder="Enter Amount" #passwordInput="ngModel">
+            <mat-error *ngIf="passwordInput.invalid">Please enter password</mat-error>
+        </mat-form-field>
+
+        <button mat-raised-button color="accent" type="submit" *ngIf="!isLoading">BUY TOKEN
+      </button>
+
+        <!-- <mat-spinner *ngIf="isLoading"></mat-spinner> -->
+    </form>
+</mat-card>

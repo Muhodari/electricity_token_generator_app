@@ -21,6 +21,10 @@ h6 {
 p {
   margin: 0;
 }
+app-buy{
+  margin-right: 1100px;
+  position: relative;
+}
 
 .spacer {
   flex: 1;
