@@ -8,6 +8,5 @@ module.exports = (app) => {
   router.get("/:meter", Meters.findOne);
   router.get("/:meter/details", Meters.getMeterDetails);
   router.put("/:meter", Meters.update);
-  router.delete("/:meter", Meters.delete);
   app.use("/api/meter", router);
 };
