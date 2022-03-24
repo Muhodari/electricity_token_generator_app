@@ -12,17 +12,3 @@ COPY --from=builder /app/build /usr/share/nginx/ht
 
 
 
-
-# FROM node:16
-
-# WORKDIR /usr/app
-
-# COPY package*.json ./
-
-# RUN npm install
-
-# COPY . .
-
-# EXPOSE 300
-
-# CMD ["npm", "start"]
