@@ -1,77 +1,41 @@
-name: Docker Image CI
-
+# This is a basic workflow to help you get started with Actions
+name: Docker Image CICD
+# Controls when the workflow will run
 on:
+  # Triggers the workflow on push or pull request events but only for the main branch
   push:
     branches: [ exam ]
   pull_request:
     branches: [ exam ]
-
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-
+  # This workflow contains a single job called "build"
   build:
-
+    # The type of runner that the job will run on
     runs-on: ubuntu-latest
-
+    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-
-# login to docker hub
-    - name: Login to Docker Hub
-      uses: docker/login-action@v1
-      with:
-        username: ${{ secrets.DOCKER_HUB_USERNAME }}
-        password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
-
-# Set up docker buildx        
-    - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v1
-
-# Client component build and push it to docker hub
-    - name: Client Build and push
-      uses: docker/build-push-action@v2
-      with:
-          context: ./client
-          file: ./client/Dockerfile
-          builder: ${{ steps.buildx.outputs.name }}
-          push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/client:latest
-          cache-from: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/client:buildcache
-          cache-to: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/client:buildcache,mode=max
-
-# nginx component build and push it to docker hub
-    - name: nginx Build and push
-      uses: docker/build-push-action@v2
-      with:
-          context: ./nginx
-          file: ./nginx/Dockerfile
-          builder: ${{ steps.buildx.outputs.name }}
-          push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/nginx:latest
-          cache-from: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/nginx:buildcache
-          cache-to: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/nginx:buildcache,mode=max
-
-# |Server component build and push it to docker hub
-    - name: server Build and push
-      uses: docker/build-push-action@v2
-      with:
-          context: ./server
-          file: ./server/Dockerfile
-          builder: ${{ steps.buildx.outputs.name }}
-          push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/server:latest
-          cache-from: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/server:buildcache
-          cache-to: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/server:buildcache,mode=max
-
-# Worker component build and push it to docker hub    
-    - name: worker Build and push
-      uses: docker/build-push-action@v2
-      with:
-          context: ./worker
-          file: ./worker/Dockerfile
-          builder: ${{ steps.buildx.outputs.name }}
-          push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/worker:latest
-          cache-from: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/worker:buildcache
-          cache-to: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/worker:buildcache,mode=max
-    
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      -
+        name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
+      -
+        name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+      -
+        name: Login to DockerHub
+        uses: docker/login-action@v1 
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      # Runs a single command using the runners shell
+      - name: Docker build
+        run: |
+          docker build . -t sagemuhodari/electricity-app
+          
+      - name: Docker push
+        run: |
+          docker push sagemuhodari/electricity-app
