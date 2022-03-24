@@ -15,7 +15,7 @@ RUN npm run build
 FROM node:16
 
 WORKDIR /usr/app/
-COPY --from=client /usr/app/client/build/ ./client/build/
+# COPY --from=client /usr/app/client/build/ ./client/build/
 
 WORKDIR /usr/app/server/
 COPY server/package*.json ./
