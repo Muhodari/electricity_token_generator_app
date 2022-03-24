@@ -21,9 +21,8 @@ WORKDIR /usr/app/server/
 COPY server/package*.json ./
 RUN npm install 
 COPY server/ ./
+ENV PORT 80
 
-ENV PORT 8000
-
-EXPOSE 8000
+EXPOSE 80
 
 CMD ["npm", "start"]

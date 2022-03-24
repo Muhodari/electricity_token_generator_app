@@ -15,7 +15,7 @@
         "api",
         "mongodb"
     ],
-    "author": "bezkoder",
+    "author": "sage Muhodari",
     "license": "ISC",
     "dependencies": {
         "body-parser": "^1.19.0",
