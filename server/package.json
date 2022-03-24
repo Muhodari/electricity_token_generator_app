@@ -1,7 +1,7 @@
 {
     "name": "node-express-mongodb",
     "version": "1.0.0",
-    "description": "Node.js Restful CRUD API with Node.js, Express and MongoDB",
+    "description": "Electricity app",
     "main": "server.js",
     "scripts": {
         "dev": "nodemon server.js",
